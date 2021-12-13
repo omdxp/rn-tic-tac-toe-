@@ -1,18 +1,18 @@
 import React, { FC } from "react";
-import { Text, View, ViewStyle } from "react-native";
+import { Text, TouchableOpacity, View, ViewStyle } from "react-native";
 
 import { TileStyles } from "./styles";
 
 interface TileProps {
   style?: ViewStyle;
-
   type?: "x" | "o";
+  onPress?: () => void;
 }
 
-export const Tile: FC<TileProps> = ({ style, type }) => {
+export const Tile: FC<TileProps> = ({ style, type, onPress }) => {
   return (
-    <View style={[TileStyles.container, style]}>
+    <TouchableOpacity style={[TileStyles.container, style]} onPress={onPress}>
       {type && <Text style={TileStyles.text}>{type}</Text>}
-    </View>
+    </TouchableOpacity>
   );
 };
