@@ -19,4 +19,14 @@ export const BoardStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+  scoreView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  scoreText: {
+    fontSize: 20,
+  },
 });

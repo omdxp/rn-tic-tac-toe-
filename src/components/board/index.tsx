@@ -14,6 +14,8 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
   const [currentPlayer, setCurrentPlayer] = useState<number>(1);
   const [xPositions, setXPositions] = useState<`${Row}${Col}`[]>([]);
   const [oPositions, setOPositions] = useState<`${Row}${Col}`[]>([]);
+  const [xScore, setXScore] = useState(0);
+  const [oScore, setOScore] = useState(0);
 
   useEffect(() => {
     checkWinner();
@@ -118,6 +120,7 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
         xPositions.includes(c)
       ) {
         xWin = true;
+        setXScore(xScore + 1);
       }
       if (
         oPositions.includes(a) &&
@@ -125,6 +128,7 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
         oPositions.includes(c)
       ) {
         oWin = true;
+        setOScore(oScore + 1);
       }
     });
     let draw: boolean = false;
@@ -147,6 +151,10 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
 
   return (
     <View>
+      <View style={BoardStyles.scoreView}>
+        <Text style={BoardStyles.scoreText}>X: {xScore}</Text>
+        <Text style={BoardStyles.scoreText}>O: {oScore}</Text>
+      </View>
       <View style={BoardStyles.row}>
         {renderTile("A1")}
         {renderTile("A2")}
