@@ -15,11 +15,13 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
             borderLeftWidth: 0,
             borderTopWidth: 0,
           }}
+          type="x"
         />
         <Tile
           style={{
             borderTopWidth: 0,
           }}
+          type="o"
         />
         <Tile
           style={{

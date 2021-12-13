@@ -5,8 +5,14 @@ import { TileStyles } from "./styles";
 
 interface TileProps {
   style?: ViewStyle;
+
+  type?: "x" | "o";
 }
 
-export const Tile: FC<TileProps> = ({ style }) => {
-  return <View style={[TileStyles.container, style]}></View>;
+export const Tile: FC<TileProps> = ({ style, type }) => {
+  return (
+    <View style={[TileStyles.container, style]}>
+      {type && <Text style={TileStyles.text}>{type}</Text>}
+    </View>
+  );
 };
