@@ -112,8 +112,6 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
     let oWin: boolean = false;
     winningCombinations.forEach((combination: any) => {
       const [a, b, c] = combination;
-      console.log(xPositions);
-
       if (
         xPositions.includes(a) &&
         xPositions.includes(b) &&
@@ -129,12 +127,20 @@ export const Board: FC<BoardProps> = ({}: BoardProps) => {
         oWin = true;
       }
     });
+    let draw: boolean = false;
+    if (xPositions.length + oPositions.length === 9 && !xWin && !oWin) {
+      draw = true;
+    }
     if (xWin) {
       alert("X wins!");
       setGameState("finished");
     }
     if (oWin) {
       alert("O wins!");
+      setGameState("finished");
+    }
+    if (draw) {
+      alert("Draw!");
       setGameState("finished");
     }
   };

@@ -1,3 +1,4 @@
+import { Entypo, Ionicons } from "@expo/vector-icons";
 import React, { FC } from "react";
 import { Text, TouchableOpacity, View, ViewStyle } from "react-native";
 
@@ -12,7 +13,23 @@ interface TileProps {
 export const Tile: FC<TileProps> = ({ style, type, onPress }) => {
   return (
     <TouchableOpacity style={[TileStyles.container, style]} onPress={onPress}>
-      {type && <Text style={TileStyles.text}>{type}</Text>}
+      {type && (
+        <Text style={TileStyles.text}>
+          {type === "o" ? (
+            <Entypo
+              name="circle"
+              size={TileStyles.text.fontSize - 20}
+              color={"green"}
+            />
+          ) : (
+            <Ionicons
+              name="close"
+              size={TileStyles.text.fontSize}
+              color={"red"}
+            />
+          )}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
